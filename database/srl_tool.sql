@@ -1,12 +1,11 @@
-/*Database*/
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: Jun 23, 2020 at 05:19 PM
--- Server version: 8.0.18
--- PHP Version: 7.3.12
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mer. 24 juin 2020 à 15:33
+-- Version du serveur :  5.7.19
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -20,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `srl_tool`
+-- Base de données :  `srl_tool`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accomplir_objectif`
+-- Structure de la table `accomplir_objectif`
 --
 
 DROP TABLE IF EXISTS `accomplir_objectif`;
@@ -41,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `accomplir_objectif` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `apprenant`
+-- Structure de la table `apprenant`
 --
 
 DROP TABLE IF EXISTS `apprenant`;
@@ -50,13 +49,22 @@ CREATE TABLE IF NOT EXISTS `apprenant` (
   `nomApprenant` varchar(45) NOT NULL,
   `prenomApprenant` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
+  `mot_de_passe` varchar(12) NOT NULL,
   PRIMARY KEY (`idApprenant`,`nomApprenant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `apprenant`
+--
+
+INSERT INTO `apprenant` (`idApprenant`, `nomApprenant`, `prenomApprenant`, `email`, `mot_de_passe`) VALUES
+(1, 'ikram', 'ben', 'ikram@gmail.com', 'jkbfv'),
+(8, 'nawel', 'tahri', 'nawel@gmail.com', 'ljncd');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cours`
+-- Structure de la table `cours`
 --
 
 DROP TABLE IF EXISTS `cours`;
@@ -72,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `cours` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `indicateur`
+-- Structure de la table `indicateur`
 --
 
 DROP TABLE IF EXISTS `indicateur`;
@@ -89,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `indicateur` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `objectif`
+-- Structure de la table `objectif`
 --
 
 DROP TABLE IF EXISTS `objectif`;
@@ -104,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `objectif` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `resultat`
+-- Structure de la table `resultat`
 --
 
 DROP TABLE IF EXISTS `resultat`;
@@ -125,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `resultat` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `strategie`
+-- Structure de la table `strategie`
 --
 
 DROP TABLE IF EXISTS `strategie`;
@@ -141,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `strategie` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `suivre`
+-- Structure de la table `suivre`
 --
 
 DROP TABLE IF EXISTS `suivre`;
@@ -158,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `suivre` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trace`
+-- Structure de la table `trace`
 --
 
 DROP TABLE IF EXISTS `trace`;
@@ -174,50 +182,50 @@ CREATE TABLE IF NOT EXISTS `trace` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `accomplir_objectif`
+-- Contraintes pour la table `accomplir_objectif`
 --
 ALTER TABLE `accomplir_objectif`
   ADD CONSTRAINT `fk_Objectif_has_Strategie_Objectif1` FOREIGN KEY (`Objectif_idObjectifs`) REFERENCES `objectif` (`idObjectifs`),
   ADD CONSTRAINT `fk_Objectif_has_Strategie_Strategie1` FOREIGN KEY (`Strategie_idStrategie`) REFERENCES `strategie` (`idStrategie`);
 
 --
--- Constraints for table `indicateur`
+-- Contraintes pour la table `indicateur`
 --
 ALTER TABLE `indicateur`
   ADD CONSTRAINT `fk_Indicateur_Resultat1` FOREIGN KEY (`Resultat_idResultat`) REFERENCES `resultat` (`idResultat`);
 
 --
--- Constraints for table `objectif`
+-- Contraintes pour la table `objectif`
 --
 ALTER TABLE `objectif`
   ADD CONSTRAINT `fk_Objectif_Apprenant` FOREIGN KEY (`Apprenant_idApprenant`) REFERENCES `apprenant` (`idApprenant`);
 
 --
--- Constraints for table `resultat`
+-- Contraintes pour la table `resultat`
 --
 ALTER TABLE `resultat`
   ADD CONSTRAINT `fk_Resultat_Cours1` FOREIGN KEY (`Cours_idCours`,`Cours_Apprenant_idApprenant`,`Cours_Apprenant_nomApprenant`) REFERENCES `cours` (`idCours`, `Apprenant_idApprenant`, `Apprenant_nomApprenant`),
   ADD CONSTRAINT `fk_Resultat_Strategie1` FOREIGN KEY (`Strategie_idStrategie`,`Strategie_Indicateur_idIndicateur`) REFERENCES `strategie` (`idStrategie`, `Indicateur_idIndicateur`);
 
 --
--- Constraints for table `strategie`
+-- Contraintes pour la table `strategie`
 --
 ALTER TABLE `strategie`
   ADD CONSTRAINT `fk_Strategie_Indicateur1` FOREIGN KEY (`Indicateur_idIndicateur`) REFERENCES `indicateur` (`idIndicateur`);
 
 --
--- Constraints for table `suivre`
+-- Contraintes pour la table `suivre`
 --
 ALTER TABLE `suivre`
   ADD CONSTRAINT `fk_Apprenant_has_Cours_Apprenant1` FOREIGN KEY (`Apprenant_idApprenant`) REFERENCES `apprenant` (`idApprenant`),
   ADD CONSTRAINT `fk_Apprenant_has_Cours_Cours1` FOREIGN KEY (`Cours_idCours`) REFERENCES `cours` (`idCours`);
 
 --
--- Constraints for table `trace`
+-- Contraintes pour la table `trace`
 --
 ALTER TABLE `trace`
   ADD CONSTRAINT `fk_Trace_Apprenant1` FOREIGN KEY (`Apprenant_idApprenant`) REFERENCES `apprenant` (`idApprenant`),
