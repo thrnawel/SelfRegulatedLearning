@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ok --> 
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    SRL - Accueil
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+ 
+  <!-- CSS Files -->
+  <link href="../assets/css/font_style.css" rel="stylesheet" />
+  <link href="../assets/css/icon_style.css" rel="stylesheet" />
+  <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+  
+</head>
+
+<body style="background-color: white;">
+  <div class="wrapper">
+ 
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg  navbar-block ">
+        <div class="container-fluid">
+          <div class="col-4">
+            <a href="#">
+              <b>OUTIL D'ASSISTANCE A L'AUTOREGULATION</b>
+            </a>
+          </div>
+          <div class="col justify-content-left">
+            <a><b>Nom de l'outil + logo</b></A>
+          </div>
+         
+          <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="nouveauCours.html">
+                  <i class="material-icons">book</i>Ajouter un cours
+                </a>
+            </ul>
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">person</i>
+                  <p class="d-lg-none d-md-block">
+                    Account
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                  <a class="dropdown-item" href="#">Profil</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Déconnexion</a>
+                </div>
+              </li>  
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content" >
+        <div class="container-fluid" style="width: 95%;">
+          <div class="row mb-3 mt-5">
+            <div class="col-1"><p style="font-size :30px; font-variant: small-caps">Bienvenu</p></div>
+            <!--<div class="col-2"><p style="font-size :20px; text-align: center; font-variant: small-caps">nom utilisateur</p></div>-->
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="card card-profile">
+                <div class="card-avatar">
+                  <a href="javascript:;">
+                    <img class="img" src="../assets/img/learner.png" />
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h6 class="card-category text-gray">....</h6>
+                  <h4 class="card-title">Nom de l'utilisateur</h4>
+                  <p class="card-description">
+                   Afficher<br> Ses<br> infos. <br>personnelles....<br>....
+                  </p>
+                  <a href="javascript:;" class="btn btn-primary btn-round">Editer</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-8 mt-3">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title ">Cours enregistrés</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-hover">
+                          <thead class=" text-primary">
+                            <th>
+                              
+                            </th>
+                            <th>
+                              Nom
+                            </th>
+                            <th>
+                              Plateforme
+                            </th>
+                            <th></th>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <a href="cours.html">
+                                  <b>1</b>
+                                </a>
+                              </td>
+                              <td><a href="cours.html">
+                                web dev.
+                              </td></a>
+                              <td>
+                                Edx
+                              </td>
+                              <td>
+                                <button type="button" rel="tooltip" class="btn btn-danger">
+                                  <i class="material-icons">close</i>
+                              </button>
+                              </td>
+                              </tr>
+                            <tr>
+                              <td>
+                                <a href="dashboard.html">2</a>
+                              </td>
+                              <td><a href="dashboard.html">
+                                c programming</a>
+                              </td>
+                              <td>
+                                Udacity
+                              </td>
+                              <td>
+                                <button type="button" rel="tooltip" class="btn btn-danger">
+                                  <i class="material-icons">close</i>
+                              </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <a href="dashboard.html">3</a>
+                              </td>
+                              <td><a href="dashboard.html">
+                                TCP/IP</a>
+                              </td>
+                              <td>
+                                Openclassrooms
+                              </td>
+                              <td>
+                                <button type="button" rel="tooltip" class="btn btn-danger">
+                                  <i class="material-icons">close</i>
+                              </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-left: 0px;">
+            <div class="col-10">
+              <div class="card card-primary" style="background-color: rgba(155, 2, 155, 0.048);">
+                <div class="card-header card-header-icon card-header-primary">
+                  <div class="card-icon">
+                    <i class="material-icons">school</i>
+                  </div>
+                  <h4 class="card-title" style="font-size: 30px; color: rgb(155, 2, 155);">Stratégies à utiliser</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover" >
+                      <thead class=" text-primary">
+                        <th>
+                          
+                        </th>
+                        <th>
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <b>1</b>
+                          </td>
+                          <td>
+                            .......
+                          </td>
+                          </tr>
+                        <tr>
+                          <td>
+                            <b>2</b>
+                          </td>
+                          <td>
+                            ..........
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+        </div>
+      </div>
+      </div>
+      
+    
+  </div>
+  <!--<footer class="footer" style="background-color: white;">
+    <div class="container-fluid">
+      <div class="copyright float-right">
+      &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>
+      </div>
+    </div>
+  </footer>-->
+</div>
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+ 
+  <script src="../assets/js/plugins/moment.min.js"></script>
+ 
+  <script src="../assets/js/plugins/sweetalert2.js"></script>
+  
+  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
+  
+  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+  
+  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+  
+  <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+  
+  <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+ 
+  <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+  
+  <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+  
+  <script src="../assets/js/plugins/fullcalendar.min.js"></script>
+ 
+  <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
+  
+  <script src="../assets/js/plugins/nouislider.min.js"></script>
+
+  <script src="../assets/js/plugins/arrive.min.js"></script>
+   
+  <script src="../assets/js/plugins/chartist.min.js"></script>
+
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  
+  <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  
+  
+</body>
+
+</html>

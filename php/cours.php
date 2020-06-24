@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-jjjjj
+
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Nouveau cours
+    Cours
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
  
@@ -35,7 +35,7 @@ jjjjj
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="accueil.html">
-                  <i class="material-icons">table</i>Acceuil
+                  <i class="material-icons">book</i>Accueil
                 </a>
             </ul>
             <ul class="navbar-nav">
@@ -57,78 +57,61 @@ jjjjj
         </div>
       </nav>
       <!-- End Navbar -->
-
       <div class="content" >
         <div class="container-fluid" style="width: 95%;">
-          <div class="row mb-3 mt-5">
-            <div class="col-3 ml-3"><p style="font-size :30px; font-variant: small-caps;">Ajouter un cours</p></div>
+          <div class="row mt-5">
+            <div class="col"><p style="font-size :30px; font-variant: small-caps">nom - du - cours<br></p></div>
             <!--<div class="col-2"><p style="font-size :20px; text-align: center; font-variant: small-caps">nom utilisateur</p></div>-->
           </div>
-          <div class="row" style="margin-left: 200px;">
-              <div class="col-10">
-                <div class="card">
-                  <div class="card-header card-header-icon card-header-primary">
-                    <div class="card-icon">
-                      <i class="material-icons">school</i>
-                    </div>
-                    <h4 class="card-title" style="font-size: 30px; color: rgb(155, 2, 155);">Nouveau cours</h4>
-                  </div>
-                    <div class="card-body mt-2">
-                      <form>
-                        <div class="form-group bmd-form-group"> 
-                          <label for="plateforme" class="bmd-label-floating">Plateforme du cours</label>
-                          <input type="text" class="form-control" id="plateforme">
+          <div class="row">
+            <div class="col mt-4">
+                    <div class="card" style="height: 300px;">
+                        <div class="card-header card-header-primary">
+                          <h4 class="card-title ">Vos objectifs</h4>
                         </div>
-                        <div class="form-group bmd-form-group">
-                          <label for="cours" class="bmd-label-floating">Nom du cours</label>
-                          <input type="text" class="form-control" id="cours">
-                        </div>
-                        <div class="form-group bmd-form-group">
-                          <label for="id" class="bmd-label-floating">Nom d'utilisateur sur la plateforme</label>
-                          <input type="text" class="form-control" id="id">
-                        </div> 
-                        <label class="mt-3" style="color: purple;"><b>Quels sont vos objectifs pour ce cours?</b></label>
-                        <div class="form-group purple-border">
-                          <textarea class="form-control" id="textarea" rows="5"
-                         placeholder="                          - Objectif 1 
-                          - Objectif 2
-                          - Objectif 3
-                          .
-                          ."></textarea>
-                        </div>
-                        
-                      </form>
-                      <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect pull-center" data-toggle="modal" data-target="#popup">Ajouter</button>
-                      <!--popup-->
-                      <div id="popup" class="modal purple-border">
-                        <div class="modal-dialog modal-dialog-centered">
-                                 <div class="modal-content">
-                                  <div class="modal-header">
-                                       <p style="font-size: 20px;"> <b>Cours enregistré!</b></p>
-                                        </div>
-                                     <div class="modal-body">
-                                       <p> Votre apprentissage est désormais suivi</p>
-                                       <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fermer</button>
-                                      </div>
-                                 </div>
+                        <div class="card-body">
+                          Lui
+                          afficher <br>
+                          ses<br>
+                          objectifs<br>
+
                         </div>
                       </div>
-                      <!--<a href="javascript:;" class="btn btn-round" style="background-color:rgb(255, 255, 255); margin-left: 370px; margin-top: 40px; color: purple; font-size: 15px;">Ajouter</a>-->
+                </div>
+            
+            <div class="col mt-4">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card" style="height: 300px;">
+                    <div class="card-header card-header-icon card-header-primary">
+                      <div class="card-icon">
+                        <i class="material-icons">language</i>
+                      </div>
+                      <h4 class="card-title" style="font-size: 30px; color: rgb(155, 2, 155);">Statistiques</h4>
+                    </div>
+                    <div class="card-body">
+                      Différentes
+                      info <br>
+                      sur son <br>
+                      état<br>
+                      d'avancement.... <br>
+                      peut etre afficher les indicateurs en couleur (rouge-orange-vert) <br>
+                    </div>
+                    <div class="card-footer">
+                        <a href="dashboard.html" class="btn btn-round" style="background-color:rgba(155, 2, 155, 0.555); margin-left: 500px;">Dashboard</a>
+                    </div>
                   </div>
                 </div>
+              </div>
             </div>
           </div>
+          
+          
+          
         </div>
       </div>
-
-      
-
-
-
-
-
-
-  <!--<footer class="footer" style="background-color: white;">
+      </div>
+    <footer class="footer" style="background-color: white;">
     <div class="container-fluid">
       <div class="copyright float-right">
       &copy;
@@ -137,7 +120,7 @@ jjjjj
         </script>
       </div>
     </div>
-  </footer>-->
+  </footer>
 </div>
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.min.js"></script>
@@ -176,6 +159,8 @@ jjjjj
 <script src="../assets/js/plugins/bootstrap-notify.js"></script>
 
 <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  
+  
 </body>
 
 </html>
