@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    SRL - Accueil
+    Connexion
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
  
@@ -22,14 +21,14 @@
       <div class="row" style="height: 100vh; width: auto;">
           <div class="col-7" style="background-color: rgba(241, 225, 243, 0.438);"></div>
           <div class="col">
-            <form class="border border-light p-5 mt-2" method="POST" action="../php/connexion.php">
+            <form class="border border-light p-5 mt-2"  method="POST" action="../php/connexion.php" >
                 <img class="img mx-auto d-block" src="../assets/img/login.png"  /> 
                 <p class="h3 mb-4 text-center">Connexion</p>
             
-                <input type="email" class="form-control mb-4" name="mailconnect" placeholder="E-mail">
+                <input type="email" class="form-control mb-4" name="eml" placeholder="E-mail">
 
             
-                <input type="password" class="form-control mb-4" name="mdpconnect" placeholder="Password">
+                <input type="password" class="form-control mb-4" name="pwd" placeholder="Password">
             
                 <div class="d-flex justify-content-between">
                     <div>
@@ -37,8 +36,20 @@
                     </div>
                 </div>
             
-                <button class="btn btn-primary btn-block my-4 mb-3" type="submit" name="formconnexion">Se connecter</button>
+                <button class="btn btn-primary btn-block my-4 mb-3" type="submit" name="submit" >Se connecter</button>
+                
+                <?php
+                if(isset($_GET['erreur'])){
+                    $err = $_GET['erreur'];
+                    if($err==1)
+                        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                    else
+                    if($err==2)
+                    echo "<p style='color:red'>Utilisateur ou mot de passe vide</p>";
 
+                }
+                ?>
+                
                 <div class="text-center">
                     <p>Pas encore de compte?
                         <a href="nouveauC.html">Créer un compte</a>   
