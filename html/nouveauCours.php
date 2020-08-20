@@ -98,6 +98,7 @@
                           ."></textarea>
                         </div>
 
+
                         <!-- messages d'erreurs -->
                       <?php
                       if(isset($_GET['error'])){
@@ -110,7 +111,9 @@
 
                        }
                        ?>
-                      
+
+
+
                       <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect pull-center" name="submit">Ajouter</button>
                       <!--data-toggle="modal"  data-target="#popup"-->
                       

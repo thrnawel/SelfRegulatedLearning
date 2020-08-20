@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- ok --> 
@@ -64,7 +66,7 @@
             <!--<div class="col-2"><p style="font-size :20px; text-align: center; font-variant: small-caps">nom utilisateur</p></div>-->
           </div>
           
-          <form methode="POST" action = "../php/nouveauC.php"> <!--c'est okk -->
+          <form methode="POST" action = ""> <!--c'est okk -->
           <div class="row" >
             <div class="col">
               <div class="card card-profile">
@@ -89,21 +91,8 @@
                       
                       }
                   }
-                    
-                  //quand un apprenant fiat une connexion
-                 // else
-                  //{if(isset($_GET['afficherApprenantConnecte']))
-                    //{
-                      //$affAC = $_GET['afficherApprenantConnecte'];
-                      //if($affAC==0)
-                        //{
-                          //if (isset($_SESSION['nom'])
-                            //echo $_SESSION['nom'];
-                        //}
-                    
-                  //}
-
-                 ?>
+                  ?>
+                 
                  <br>
                 <a href="../html/EditerProfil.html" class="btn btn-primary btn-round">Editer profile</a>
                 </div>
