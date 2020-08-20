@@ -4,7 +4,7 @@ if(isset($_POST['eml']) && isset($_POST['pwd']))
 {
     // connexion à la base de données
     
-    $db = mysqli_connect('localhost', 'root', '','srl_tool')
+    $db = mysqli_connect('localhost', 'root', '','oaa')
            or die('could not connect to database');
     
     // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
@@ -23,6 +23,7 @@ if(isset($_POST['eml']) && isset($_POST['pwd']))
         {
            $_SESSION['eml'] = $eml;
            header('Location: principaleCnx.php');
+           
         }
         else
         {

@@ -8,12 +8,11 @@
             <?php
                 session_start();
                 if($_SESSION['eml'] !== ""){
-                    $user = $_SESSION['eml'];
                     // aller à la page d'accueil de tel apprenant
-                    header("Location:../html/accueil.html");
-
+                    header("Location:../html/accueil.php");
                 }
             ?>
+            
             
         </div>
     </body>

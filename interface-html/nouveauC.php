@@ -23,7 +23,7 @@
       <div class="row" style="height: 100vh; width: auto;">
           <div class="col-7" style="background-color: rgba(241, 225, 243, 0.438);"></div>
           <div class="col">
-            <form class="border border-light p-5 mt-3" method="POST" action="../php/nouveauC.php" >
+            <form class="border border-light p-5 mt-3" method="POST" action="../php/nouveauC.php" >       
                 <img class="img mx-auto d-block" src="../assets/img/new.png" />
                 <p class="h3 mb-4 text-center">Créer un compte</p>
             
@@ -34,9 +34,22 @@
 
                 <input type="email" class="form-control mb-4" name="eml" placeholder="E-mail">
 
-                <input type="password" class="form-control" name="pwd" placeholder="Mot de passe">
+                <input type="password" class="form-control" name="pwd" placeholder="Mot de passe"></br>
+
+                      <?php
+                           if(isset($_GET['erreur'])){
+                           $err = $_GET['erreur'];
+                             if($err==1)
+                             echo "<p style='color:red'>Compte existait déjà !</p>";
+                             else
+                               if($err==2)
+                               echo "<p style='color:red'>Tous les champs doivent être complétés !</p>";
+
+                            }
+                      ?>
             
                 <button class="btn btn-primary btn-block my-4" type="submit" name="submit">S'enregistrer</button>
+     
 
                 <div class="text-center">
                     <p>Vous avez un compte?
@@ -44,41 +57,6 @@
                     </p>
                 </div>
             </form>
-
-           <!-- <php  
-if(isset($_POST["submit"])){  
-if(!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']) && !empty($_POST['password'])) {  
-    $user=$_POST['name'];  
-    $surname=$_POST['surname'];  
-    $email=$_POST['email']; 
-    $pass=$_POST['password']; 
-    $con=mysql_connect('localhost','root','') or die(mysql_error());  
-    mysql_select_db('srl_tool') or die("cannot select DB");  
-  
-    $query=mysql_query("SELECT * FROM Apprenant WHERE nameApprenant='".$user."'");  
-    $numrows=mysql_num_rows($query);  
-    if($numrows==0)  
-    {  
-    $sql="INSERT INTO Apprenant(nomApprenant,prenomApprenant,email,mot_de_passe,) VALUES('','$user','$surname','$email','$pass')";  
-   
-    $result=mysql_query($sql);  
-        if($result){  
-    echo "Account Successfully Created";  
-    } else {  
-    echo "Failure!";  
-    }  
-  
-    } else {  
-    echo "That username already exists! Please try again with another.";  
-    }  
-  
-} else {  
-    echo "All fields are required!";  
-}  
-}  
-?>  
-
--->
           </div>
       </div>
   </div>

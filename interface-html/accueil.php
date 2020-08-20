@@ -34,7 +34,7 @@
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="nouveauCours.html">
+                <a class="nav-link" href="nouveauCours.php">
                   <i class="material-icons">book</i>Ajouter un cours
                 </a>
             </ul>
@@ -49,7 +49,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="#">Profil</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="connexion.html">Déconnexion</a>
+                  <a class="dropdown-item" href="connexion.php">Déconnexion</a>
                 </div>
               </li>  
             </ul>
@@ -60,10 +60,12 @@
       <div class="content" >
         <div class="container-fluid" style="width: 95%;">
           <div class="row mb-3 mt-5">
-            <div class="col-1"><p style="font-size :30px; font-variant: small-caps">Bienvenu</p></div>
+            <div class="col-1" ><p style="font-size :30px; font-variant: small-caps">Bienvenu</p></div>
             <!--<div class="col-2"><p style="font-size :20px; text-align: center; font-variant: small-caps">nom utilisateur</p></div>-->
           </div>
-          <div class="row">
+          
+          <form methode="POST" action = "../php/nouveauC.php"> <!--c'est okk -->
+          <div class="row" >
             <div class="col">
               <div class="card card-profile">
                 <div class="card-avatar">
@@ -72,15 +74,42 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h6 class="card-category text-gray">....</h6>
-                  <h4 class="card-title">Nom de l'utilisateur</h4>
-                  <p class="card-description">
-                   Afficher<br> Ses<br> infos. <br>personnelles....<br>....
-                  </p>
-                  <a href="../html/EditerProfil.html" class="btn btn-primary btn-round">Editer</a>
+                 <?php
+                  session_start();
+                  if(isset($_GET['afficher']))
+                  {
+                    $aff = $_GET['afficher'];
+                    if($aff==0)
+                      {
+                        if (isset($_SESSION['nom']) && isset($_SESSION['pre']) && isset($_SESSION['eml'])) 
+                          {
+                          echo "<h3>",$_SESSION['nom']."\n".$_SESSION['pre']."<br>","</h3>";
+                        
+                          }
+                      
+                      }
+                  }
+                    
+                  //quand un apprenant fiat une connexion
+                 // else
+                  //{if(isset($_GET['afficherApprenantConnecte']))
+                    //{
+                      //$affAC = $_GET['afficherApprenantConnecte'];
+                      //if($affAC==0)
+                        //{
+                          //if (isset($_SESSION['nom'])
+                            //echo $_SESSION['nom'];
+                        //}
+                    
+                  //}
+
+                 ?>
+                 <br>
+                <a href="../html/EditerProfil.html" class="btn btn-primary btn-round">Editer profile</a>
                 </div>
               </div>
             </div>
+          </form>
             
             <div class="col-8 mt-3">
               <div class="row">

@@ -33,7 +33,7 @@
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="accueil.html">
+                <a class="nav-link" href="accueil.php">
                   <i class="material-icons">table</i>Acceuil
                 </a>
             </ul>
@@ -63,7 +63,7 @@
             <div class="col-3 ml-3"><p style="font-size :30px; font-variant: small-caps;">Ajouter un cours</p></div>
             <!--<div class="col-2"><p style="font-size :20px; text-align: center; font-variant: small-caps">nom utilisateur</p></div>-->
           </div>
-          <div class="row" style="margin-left: 200px;">
+          <div class="row" style="margin-left: 200px;" >
               <div class="col-10">
                 <div class="card">
                   <div class="card-header card-header-icon card-header-primary">
@@ -73,32 +73,50 @@
                     <h4 class="card-title" style="font-size: 30px; color: rgb(155, 2, 155);">Nouveau cours</h4>
                   </div>
                     <div class="card-body mt-2">
-                      <form>
+                      <form method="POST" action="../php/nouveauCours.php">
                         <div class="form-group bmd-form-group"> 
-                          <label for="plateforme" class="bmd-label-floating">Plateforme du cours</label>
-                          <input type="text" class="form-control" id="plateforme">
+                          <label for="plateforme" class="bmd-label-floating" >Plateforme du cours</label>
+                          <input type="text" class="form-control" id="plateforme" name="plateforme">
                         </div>
                         <div class="form-group bmd-form-group">
                           <label for="cours" class="bmd-label-floating">Nom du cours</label>
-                          <input type="text" class="form-control" id="cours">
+                          <input type="text" class="form-control" id="cours" name="cours">
                         </div>
+                        
                         <div class="form-group bmd-form-group">
-                          <label for="id" class="bmd-label-floating">Nom d'utilisateur sur la plateforme</label>
-                          <input type="text" class="form-control" id="id">
-                        </div> 
+                          <label for="id" class="bmd-label-floating">Nom/Id de l'apprenant sur la plateforme d'apprentissage</label>
+                          <input type="text" class="form-control" id="id" name="id">
+                        </div>
+                        
                         <label class="mt-3" style="color: purple;"><b>Quels sont vos objectifs pour ce cours?</b></label>
                         <div class="form-group purple-border">
-                          <textarea class="form-control" id="textarea" rows="5"
+                          <textarea class="form-control" name="dscrp" id="dscrp" rows="5"
                          placeholder="                          - Objectif 1 
                           - Objectif 2
                           - Objectif 3
                           .
                           ."></textarea>
                         </div>
-                        
+
+                        <!-- messages d'erreurs -->
+                      <?php
+                      if(isset($_GET['error'])){
+                      $err = $_GET['error'];
+                        if($err==1)
+                        echo "<p style='color:red'><h3 style='color:red'>Vous suivez déjà ce cours!</h3></p>";
+                        else
+                          if($err==2)
+                          echo "<p style='color:red'><h3 style='color:red'>Tous les champs doivent être complétés!</h3></p>";
+
+                       }
+                       ?>
+                      
+                      <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect pull-center" name="submit">Ajouter</button>
+                      <!--data-toggle="modal"  data-target="#popup"-->
+                      
+                      
                       </form>
-                      <button type="submit" class="btn btn-outline-primary btn-rounded waves-effect pull-center" data-toggle="modal" data-target="#popup">Ajouter</button>
-                      <!--popup-->
+                      <!--popup
                       <div id="popup" class="modal purple-border">
                         <div class="modal-dialog modal-dialog-centered">
                                  <div class="modal-content">
@@ -112,6 +130,7 @@
                                  </div>
                         </div>
                       </div>
+                      -->
                       <!--<a href="javascript:;" class="btn btn-round" style="background-color:rgb(255, 255, 255); margin-left: 370px; margin-top: 40px; color: purple; font-size: 15px;">Ajouter</a>-->
                   </div>
                 </div>

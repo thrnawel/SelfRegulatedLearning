@@ -42,17 +42,17 @@
                 if(isset($_GET['erreur'])){
                     $err = $_GET['erreur'];
                     if($err==1)
-                        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                        echo "<p style='color:red'>Email ou mot de passe incorrect</p>";
                     else
                     if($err==2)
-                    echo "<p style='color:red'>Utilisateur ou mot de passe vide</p>";
+                    echo "<p style='color:red'>Tous les champs doivent être complétés!</p>";
 
                 }
                 ?>
                 
                 <div class="text-center">
                     <p>Pas encore de compte?
-                        <a href="nouveauC.html">Créer un compte</a>   
+                        <a href="nouveauC.php">Créer un compte</a>   
                         
                     </p>
                 </div>
