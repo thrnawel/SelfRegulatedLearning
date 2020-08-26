@@ -1,6 +1,5 @@
 <?php  
 session_start();
-//$conn=mysqli_connect('localhost','root','','srl_tool') or die (mysqli_error());
  //connexion
  $db = new PDO('mysql:host=localhost;dbname=oaa','root','') or die('could not connect to database');
 
@@ -23,17 +22,15 @@ if(isset($_POST['submit'])){
    else
    {
       if(!empty($NOM) && !empty($PRE) && !empty($EML) && !empty($PWD)){
-        //$PWD=password_hash($PWD, PASSWORD_DEFAULT);
+
         $req="INSERT INtO apprenant (nomApprenant, prenomApprenant, email, mot_de_passe) VALUES ('$NOM', '$PRE', '$EML', '$PWD')";
         $res=$db->prepare($req);
         $res->execute();
-        $_SESSION['nom'] = $NOM;
-        $_SESSION['pre'] = $PRE;
-        $_SESSION['eml'] = $EML;
-        header("Location: ../html/accueil.php?afficher=0");
-        
-
-        //echo"enregistrement effectué";
+        //$_SESSION['nom'] = $NOM;
+        //$_SESSION['pre'] = $PRE;
+        //$_SESSION['eml'] = $EML;
+        //header("Location: ../html/accueil.php?afficher=0");
+        header("Location: ../html/connexion.php");
 
       }
       else

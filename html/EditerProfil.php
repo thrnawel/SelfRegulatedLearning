@@ -34,20 +34,19 @@ $db = new PDO('mysql:host=localhost;dbname=oaa','root','') or die('could not con
       <nav class="navbar navbar-expand-lg  navbar-block ">
         <div class="container-fluid">
           <div class="col-4">
-            <a href="dashboard.html">
-              <b>OUTIL D'ASSISTANCE A L'AUTOREGULATION</b>
-            </a>
+            <img class="img" src="../assets/img/logo.JPG" />
           </div>
           <div class="col justify-content-left">
-            <a><b>Nom de l'outil + logo</b></A>
+            
           </div>
          
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="accueil.html">
+                <a class="nav-link" href="accueil.php">
                   <i class="material-icons">table</i>Acceuil
                 </a>
+             </li>
             </ul>
             <ul class="navbar-nav">
               <li class="nav-item dropdown">

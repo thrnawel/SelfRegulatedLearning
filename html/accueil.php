@@ -1,4 +1,37 @@
+<?php
+  session_start();
+  $db = new PDO('mysql:host=localhost;dbname=oaa', 'root', '') or die('could not connect to database');
+  
+  //preparer la requete
+  //$req = $db->prepare('SELECT * FROM strategie');
 
+  //execution de la requete
+  //$executeIsOK = $req->execute();
+
+  //recuperer des resultats en une seule fois
+  //$strategies = $req->fetchAll();
+  //var_dump($strategie);
+
+  $loggedUser = $_SESSION['user'];
+  $user_id = $loggedUser['idApprenant'];
+  
+  
+
+  $sql = "SELECT cours.* 
+          FROM cours
+          LEFT JOIN objectif on objectif.cours_idCours = cours.idCours
+          where objectif.apprenant_idApprenant = $user_id
+          ";
+    $result = $db->prepare($sql);
+    $result->execute();
+    $cours = $result->fetchAll();
+
+  
+
+
+    // var_dump($cours);
+    // die();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,13 +58,9 @@
       <nav class="navbar navbar-expand-lg  navbar-block ">
         <div class="container-fluid">
           <div class="col-4">
-            <a href="#">
-              <b>OUTIL D'ASSISTANCE A L'AUTOREGULATION</b>
-            </a>
+          <img class="img" src="../assets/img/logo.JPG" />
           </div>
-          <div class="col justify-content-left">
-            <a><b>Nom de l'outil + logo</b></A>
-          </div>
+        
          
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
@@ -44,6 +73,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
+                  
                   <p class="d-lg-none d-md-block">
                     Account
                   </p>
@@ -76,25 +106,23 @@
                   </a>
                 </div>
                 <div class="card-body">
-                 <?php
-                  session_start();
-                  if(isset($_GET['afficher']))
-                  {
-                    $aff = $_GET['afficher'];
-                    if($aff==0)
-                      {
-                        if (isset($_SESSION['nom']) && isset($_SESSION['pre']) && isset($_SESSION['eml'])) 
-                          {
-                          echo "<h3>",$_SESSION['nom']."\n".$_SESSION['pre']."<br>","</h3>";
-                        
-                          }
-                      
-                      }
-                  }
-                  ?>
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <?= "<h3>",$_SESSION['user']['nomApprenant']?> <?= $_SESSION['user']['prenomApprenant']."<h3>" ?>
+                  <?php endif ?>
+                  <!-- ///le cas d'enregistrement
+                 
+                 if (isset($_GET['afficher'])) {
+                     $aff = $_GET['afficher'];
+                     if ($aff==0) {
+                         if (isset($_SESSION['nom']) && isset($_SESSION['pre']) && isset($_SESSION['eml'])) {
+                             echo "<h3>",$_SESSION['nom']."\n".$_SESSION['pre']."<br>","</h3>";
+                         }
+                     }
+                 }
+                 -->
                  
                  <br>
-                <a href="../html/EditerProfil.html" class="btn btn-primary btn-round">Editer profile</a>
+                <a href="../html/EditerProfil.php" class="btn btn-primary btn-round">Editer profil</a>
                 </div>
               </div>
             </div>
@@ -112,7 +140,7 @@
                         <table class="table table-hover">
                           <thead class=" text-primary">
                             <th>
-                              
+                              #
                             </th>
                             <th>
                               Nom
@@ -123,56 +151,46 @@
                             <th></th>
                           </thead>
                           <tbody>
+                
+                            <?php foreach ($cours as $c) :  ?>
+                              
                             <tr>
                               <td>
-                                <a href="cours.html">
-                                  <b>1</b>
+                                <a href="dashboard.php">
+                                  <b><?= $c['idCours'] ?></b>
                                 </a>
                               </td>
-                              <td><a href="cours.html">
-                                web dev.
+                              <td><a href="dashboard.php">
+                              <?= $c['nomCours'] ?>
                               </td></a>
                               <td>
-                                Edx
+                              <?= $c['plateforme_url'] ?>
                               </td>
                               <td>
-                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                  <i class="material-icons">close</i>
-                              </button>
+                                   
+                                        
+                                <button type="button" class="btn btn-primary btn-link" data-toggle="modal" data-target="#popup">
+                                  <i class="material-icons">delete_forever</i> Supprimer
+                                </button>
+                                <!--popup-->
+                    <div id="popup" class="modal purple-border">
+                      <div class="modal-dialog modal-dialog-centered">
+                               <div class="modal-content">
+                                <div class="modal-header">
+                                     <p style="font-size: 20px;"> <b>Voules-vous vraiment supprimer ce cours ?</b></p>
+                                      </div>
+                                   <div class="modal-body">
+                                     <p> Toutes vos données seront perdues!</p>
+                                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Confirmer</button>
+                                    </div>
+                               </div>
+                      </div>
+                    </div>
                               </td>
                               </tr>
-                            <tr>
-                              <td>
-                                <a href="dashboard.html">2</a>
-                              </td>
-                              <td><a href="dashboard.html">
-                                c programming</a>
-                              </td>
-                              <td>
-                                Udacity
-                              </td>
-                              <td>
-                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                  <i class="material-icons">close</i>
-                              </button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a href="dashboard.html">3</a>
-                              </td>
-                              <td><a href="dashboard.html">
-                                TCP/IP</a>
-                              </td>
-                              <td>
-                                Openclassrooms
-                              </td>
-                              <td>
-                                <button type="button" rel="tooltip" class="btn btn-danger">
-                                  <i class="material-icons">close</i>
-                              </button>
-                              </td>
-                            </tr>
+                
+                            <?php endforeach ?>
+                            
                           </tbody>
                         </table>
                       </div>
@@ -182,56 +200,110 @@
               </div>
             </div>
           </div>
-          <div class="row" style="margin-left: 0px;">
-            <div class="col-10">
-              <div class="card card-primary" style="background-color: rgba(155, 2, 155, 0.048);">
-                <div class="card-header card-header-icon card-header-primary">
-                  <div class="card-icon">
-                    <i class="material-icons">school</i>
-                  </div>
-                  <h4 class="card-title" style="font-size: 30px; color: rgb(155, 2, 155);">Stratégies à utiliser</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-hover" >
-                      <thead class=" text-primary">
-                        <th>
                           
-                        </th>
-                        <th>
-                        </th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <b>1</b>
-                          </td>
-                          <td>
-                            .......
-                          </td>
+          
+            <div class="row" style="margin-left: 0px;">
+              <div class="col-12">
+                <div class="card card-primary" style="background-color: rgba(155, 2, 155, 0.048);">
+                  <div class="card-header card-header-icon card-header-primary">
+                    <div class="card-icon">
+                      <i class="material-icons">school</i>
+                    </div>
+                    <h4 class="card-title" style="font-size: 30px; color: rgb(155, 2, 155);">Stratégies à utiliser</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-hover" >
+                        <thead class=" text-primary">
+                          <th>
+                            
+                          </th>
+                          <th>
+                          </th>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <b>> Gestion du temps </b>
+                            </td>
+                            <td>
+                            - Estimez le temps nécessaire à la formation et répartissez les heures uniformément entre les différents jours de la semaine en fixant un planning clair et en définissant le nombre d'heures à étudier chaque jour (entre deux à trois heures par jour), cela vous permettra d'être régulier.
+                            </td>
+                            </tr>
+                          <tr>
+                            <td>
+                              <b>> Structuration de l'environnement </b>
+                            </td>
+                            <td>
+                              -	Aménagez et organiser votre espace de travail et trouvez un endroit dédié à l apprentissage (calme), idealement un bureau, loin de toute distraction.
+                              <br> -	Dégagez votre espace de travail de tout objet inutile et distrayant (smartphone, magazines, nourriture …), désactivez les notifications sur tous vos appareils connectés, fermez voire bloquez les accès aux réseaux sociaux sur votre ordinateur.
+                              <br> -	Prenez soin d avoir a portee de main tout le materiel necessaire. 
+                            </td>
+                            
                           </tr>
-                        <tr>
-                          <td>
-                            <b>2</b>
-                          </td>
-                          <td>
-                            ..........
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                          <tr>
+                            <td>
+                              <b>> Recherche d’information et demande d’aide </b>
+                            </td>
+                            <td>
+                              - Accédez régulièrement au forum de discussion de la plateforme d'apprentissage, demandez de l'aide chaque fois que vous en avez besoin en posant des questions pertinentes.
+                              <br> - Essayez également d'aider en répondant aux questions déjà posées, cela vous permettra de consolider ce que vous avez appris.
+                             
+                            </td>
+                            
+                          </tr>
+                          <tr>
+                            <td>
+                              <b>> Réalisation des tests, exercices et quiz  </b>
+                            </td>
+                            <td>
+                            -	Essayez de compléter tous les quiz et exercices proposés, cela vous aidera à connaître les parties du cours que vous n'avez pas bien comprises, et vous permettra d'identifier facilement vos lacunes.
+                            </td>
+                            
+                          </tr>
+                          <tr>
+                            <td>
+                              <b>> Relecture pour consolidation ou rectification </b>
+                            </td>
+                            <td>
+                            -	Relisez les chapitres où vous ressentez des lacunes, cela vous permettra d’améliorer votre niveau de compréhension.
+                              <br> -	Si vous trouvez qu'un chapitre est difficilement compréhensible, prenez aussi la peine de relire les chapitres précédents.
+                             
+                            </td>
+                            
+                          </tr>
+                          <tr>
+                            <td>
+                              <b>> Auto-explication </b>
+                            </td>
+                            <td>
+                            -	Essayez de reformuler ce que vous avez lu et appris et expliquez-le à vous-même en utilisant vos propres mots. Cela soutiendra et consolidera votre compréhension et vous aidera à intégrer les nouvelles informations avec vos connaissances déjà acquises.
+                            </td>
+                            
+                          </tr>
+                          <tr>
+                            <td>
+                              <b>> Auto-suivi et auto-évaluation  </b>
+                            </td>
+                            <td>
+                            -	Evaluez régulièrement vos progrès en analysant vos objectifs prédéfinis, cela vous permettra de savoir si vous êtes sur la bonne voie. 
+                              <br> -	Posez vous les bonne questions (ex. Est-ce que j’arrive à bien comprendre ? Suis-je entrain de bien avancer ?) cela vous permettra d’être plus efficace lors de votre apprentissage.
+                            </td>
+                            
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            
+            
+            
           </div>
-          
-          
-          
         </div>
-      </div>
-      </div>
-      
+        </div>
     
   </div>
   <!--<footer class="footer" style="background-color: white;">

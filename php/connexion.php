@@ -14,15 +14,18 @@ if(isset($_POST['eml']) && isset($_POST['pwd']))
     
     if($eml !== "" && $pwd !== "")
     {
-        $requete = "SELECT count(*) FROM apprenant where 
+        $requete = "SELECT * FROM apprenant where 
               email = '".$eml."' and mot_de_passe = '".$pwd."' ";
         $exec_requete = mysqli_query($db,$requete);
         $reponse      = mysqli_fetch_array($exec_requete);
-        $count = $reponse['count(*)'];
-        if($count!=0) // nom d'utilisateur et mot de passe correctes
+        
+        
+        if( ! empty($reponse)) // nom d'utilisateur et mot de passe correctes
         {
-           $_SESSION['eml'] = $eml;
-           header('Location: principaleCnx.php');
+           $_SESSION['user'] = $reponse;
+          
+               
+                header('Location: principaleCnx.php');
            
         }
         else

@@ -21,7 +21,10 @@
 <body style="background-color: rgb(255, 255, 255);">
   <div class="wrapper">
       <div class="row" style="height: 100vh; width: auto;">
-          <div class="col-7" style="background-color: rgba(241, 225, 243, 0.438);"></div>
+          <div class="col-7" style="background-color: rgba(241, 225, 243, 0.438);"></div> 
+          <!-- <div><img class="img" src="../assets/img/cptt.JPG" WIDTH=900 HEIGHT=750 /></div>-->
+          
+
           <div class="col">
             <form class="border border-light p-5 mt-3" method="POST" action="../php/nouveauC.php" >       
                 <img class="img mx-auto d-block" src="../assets/img/new.png" />
@@ -53,7 +56,7 @@
 
                 <div class="text-center">
                     <p>Vous avez un compte?
-                        <a href="connexion.html">Connexion</a> 
+                        <a href="connexion.php">Connexion</a> 
                     </p>
                 </div>
             </form>

@@ -9,7 +9,7 @@
                 session_start();
                 if($_SESSION['eml'] !== ""){
                     // aller à la page d'accueil de tel apprenant
-                    header("Location:../html/accueil.php");
+                    header("Location:../html/accueil.php?afficher=1");
                 }
             ?>
             

@@ -20,6 +20,7 @@
   <div class="wrapper">
       <div class="row" style="height: 100vh; width: auto;">
           <div class="col-7" style="background-color: rgba(241, 225, 243, 0.438);"></div>
+          <!--<div><img class="img" src="../assets/img/compte.JPG" /></div>-->
           <div class="col">
             <form class="border border-light p-5 mt-2"  method="POST" action="../php/connexion.php" >
                 <img class="img mx-auto d-block" src="../assets/img/login.png"  /> 

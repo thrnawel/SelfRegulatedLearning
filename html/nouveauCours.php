@@ -22,13 +22,9 @@
       <nav class="navbar navbar-expand-lg  navbar-block ">
         <div class="container-fluid">
           <div class="col-4">
-            <a href="dashboard.html">
-              <b>OUTIL D'ASSISTANCE A L'AUTOREGULATION</b>
-            </a>
+          <img class="img" src="../assets/img/logo.JPG" />
           </div>
-          <div class="col justify-content-left">
-            <a><b>Nom de l'outil + logo</b></A>
-          </div>
+         
          
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
@@ -76,21 +72,21 @@
                       <form method="POST" action="../php/nouveauCours.php">
                         <div class="form-group bmd-form-group"> 
                           <label for="plateforme" class="bmd-label-floating" >Plateforme du cours</label>
-                          <input type="text" class="form-control" id="plateforme" name="plateforme">
+                          <input type="text" class="form-control" name="plateforme">
                         </div>
                         <div class="form-group bmd-form-group">
                           <label for="cours" class="bmd-label-floating">Nom du cours</label>
-                          <input type="text" class="form-control" id="cours" name="cours">
+                          <input type="text" class="form-control" name="cours">
                         </div>
                         
                         <div class="form-group bmd-form-group">
                           <label for="id" class="bmd-label-floating">Nom/Id de l'apprenant sur la plateforme d'apprentissage</label>
-                          <input type="text" class="form-control" id="id" name="id">
+                          <input type="text" class="form-control" name="id">
                         </div>
                         
                         <label class="mt-3" style="color: purple;"><b>Quels sont vos objectifs pour ce cours?</b></label>
                         <div class="form-group purple-border">
-                          <textarea class="form-control" name="dscrp" id="dscrp" rows="5"
+                          <textarea class="form-control" name="dsc" rows="5"
                          placeholder="                          - Objectif 1 
                           - Objectif 2
                           - Objectif 3
@@ -104,7 +100,9 @@
                       if(isset($_GET['error'])){
                       $err = $_GET['error'];
                         if($err==1)
+                        {
                         echo "<p style='color:red'><h3 style='color:red'>Vous suivez déjà ce cours!</h3></p>";
+                      }
                         else
                           if($err==2)
                           echo "<p style='color:red'><h3 style='color:red'>Tous les champs doivent être complétés!</h3></p>";
