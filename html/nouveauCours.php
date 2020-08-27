@@ -86,8 +86,9 @@
                         
                         <label class="mt-3" style="color: purple;"><b>Quels sont vos objectifs pour ce cours?</b></label>
                         <div class="form-group purple-border">
-                          <textarea class="form-control" name="dsc" rows="5"
-                         placeholder="                          - Objectif 1 
+                          <textarea class="form-control" id="object" name="dsc" rows="5"
+                         placeholder="                       
+                            - Objectif 1 
                           - Objectif 2
                           - Objectif 3
                           .
@@ -195,6 +196,17 @@
 <script src="../assets/js/plugins/bootstrap-notify.js"></script>
 
 <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+    <link href="../assets/js/summernote-lite.min.css" rel="stylesheet">
+    <script src="../assets/js/summernote-lite.min.js"></script>
+<script> 
+$('#object').summernote({
+        placeholder: 'objectifs...',
+        tabsize: 2,
+        height: 120,
+        toolbar: [ ]
+      });
+</script>
+
 </body>
 
 </html>

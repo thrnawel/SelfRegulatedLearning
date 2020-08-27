@@ -1,8 +1,10 @@
 <?php
+session_start();
 //connexion  à la base de données
 $db = new PDO('mysql:host=localhost;dbname=oaa','root','') or die('could not connect to database');
 
-
+$loggedUser = $_SESSION['user'];
+$user_id = $loggedUser['idApprenant'];
 
 
 ?>
@@ -59,7 +61,7 @@ $db = new PDO('mysql:host=localhost;dbname=oaa','root','') or die('could not con
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="#">Profil</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Déconnexion</a>
+                  <a class="dropdown-item" href="connexion.php">Déconnexion</a>
                 </div>
               </li>  
             </ul>
@@ -91,7 +93,9 @@ $db = new PDO('mysql:host=localhost;dbname=oaa','root','') or die('could not con
                                 NOM
                               </td>
                               <td>
-                                <h4>nom_apprenant + prenom_apprenant</h4>
+                               <?php if (isset($_SESSION['user'])) : ?>
+                                    <?= "<h4>",$_SESSION['user']['nomApprenant']?> <?= $_SESSION['user']['prenomApprenant']."<h3>" ?>
+                                   <?php endif ?>
                               </td>
                               <td>
                                 <button type="button" rel="tooltip" class="btn pull-right" data-toggle="modal" data-target="#popupnom">
@@ -105,7 +109,9 @@ $db = new PDO('mysql:host=localhost;dbname=oaa','root','') or die('could not con
                                 ADRESSE E-MAIL
                               </td>
                               <td>
-                                <h4>e_mail</h4>
+                                 <?php if (isset($_SESSION['user'])) : ?>
+                                        <?= "<h4>",$_SESSION['user']['email']?> 
+                                  <?php endif ?>
                               </td>
                               <td>
                                 <button type="button" rel="tooltip" class="btn pull-right" data-toggle="modal" data-target="#popupmail">
@@ -119,7 +125,9 @@ $db = new PDO('mysql:host=localhost;dbname=oaa','root','') or die('could not con
                                 MOT DE PASSE
                               </td>
                               <td>
-                                <h4>*********</h4>
+                              <?php if (isset($_SESSION['user'])) : ?>
+                                  <?= "<h4>",$_SESSION['user']['mot_de_passe']?>
+                              <?php endif ?>
                               </td>
                               <td>
                                 <button type="button" rel="tooltip" class="btn pull-right" data-toggle="modal" data-target="#popupmdp">

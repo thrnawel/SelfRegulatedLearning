@@ -29,22 +29,14 @@ if(isset($_POST['submit']))
         $_SESSION['plateforme'] =$plateforme;
         $_SESSION['cours'] = $cours;
 
-      $last_id = $db->lastInsertId();
-      $idApprenant = $user_id;
+        $last_id = $db->lastInsertId();
+       
+        $idApprenant = $user_id;
       
         $req2="INSERT INtO objectif (apprenant_idApprenant,	cours_idCours, description_objectif) VALUES ('$idApprenant', '$last_id', '$dsc')";
         $res2=$db->prepare($req2);
         $res2->execute();
         $_SESSION['dsc'] = $dsc;
-
-        //$req = "SELECT * FROM objectif" ;
-        //$res = $db->prepare($res);
-        //$res->execute();
-        //$reponsec = $res->fetchAll();
-        //$_SESSION['cours'] = $reponsec;
-          
-
-
         header("Location:../html/accueil.php?cours=0");
       }
       else

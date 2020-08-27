@@ -2,38 +2,6 @@
 session_start();
 $db = new PDO('mysql:host=localhost;dbname=oaa', 'root', '') or die('could not connect to database');
 
- 
-  $loggedUser = $_SESSION['user'];
-  $user_id = $loggedUser['idApprenant'];
- 
-  // recuperer l cours_idCours
-  $loggedCours = $_SESSION['cours'];
-  $cours_id = $loggedCours['cours_idCours'];
-
-  //pour afficher les objectifs
-  $sqlo = "SELECT description_objectif 
-  FROM objectif
-  LEFT JOIN cours on objectif.cours_idCours = cours.idCours
-  where objectif.apprenant_idApprenant = $user_id
-  ";
-$reso = $db->prepare($sqlo);
-$reso->execute();
-$objectif = $reso->fetchAll();
-  //$sqlo = "SELECT description_objectif from objectif where objectif.apprenant_idApprenant = $user_id and objectif.cours_idCours = $cours_id";
-  //$reso = $db->prepare($sqlo);
-  //$reso->execute();
-  //$objectif = $reso->fetchAll();
-
-  //afficher le nnom du cours
-  $sqlc = "SELECT nomCours 
-  FROM cours
-  LEFT JOIN objectif on objectif.cours_idCours = cours.idCours
-  where objectif.apprenant_idApprenant = $user_id and objectif.cours_idCours = $cours_id
-  ";
-$resc = $db->prepare($sqlc);
-$resc->execute();
-$cour = $resc->fetchAll();
-
 ?>
 
 <!DOCTYPE html>
@@ -100,15 +68,17 @@ $cour = $resc->fetchAll();
         <p style="color: white;">some writing....</p>
        
       <div class="col"><p style="font-size :30px; font-variant: small-caps">DASHBOARD  
-      <?php foreach ($cour as $cr) :  ?>
-                            
-                            <b><?= $o['nomCours'] ?></b>
-                          
-            <?php endforeach ?>
-                
+      
+              <?php
+              $cour_id = $_GET['idCours'];
+              $stmt = $db->prepare("SELECT nomCours FROM cours WHERE idCours=$cour_id");
+              $stmt->execute([$cour_id]); 
+              $user = $stmt->fetch();
+              echo $user['nomCours'];
+              ?>  
         
 
-         <br></p></div>
+         </div>
 <div class="content" > 
  
 
@@ -227,12 +197,18 @@ $cour = $resc->fetchAll();
                    <h4 class="card-title" style="font-size: 30px; color: rgb(155, 2, 155);">Vos objectifs</h4>
                 </div>
                 <div class="card-body">
+                <?php
+                  $loggedUser = $_SESSION['user'];
+                  $user_id = $loggedUser['idApprenant'];
                   
-                <?php foreach ($objectif as $o) :  ?>
-                            
-                                  <b><?= $o['description_objectif'] ?></b>
-                                
-                  <?php endforeach ?>
+              $cour_id = $_GET['idCours'];
+              $stmt = $db->prepare("SELECT description_objectif FROM objectif join cours WHERE cours_idCours=$cour_id and apprenant_idApprenant = $user_id ");
+              $stmt->execute(); 
+              $user = $stmt->fetch();
+              echo $user['description_objectif'];
+            
+              ?>  
+               
                       
                 </div>
            </div></div>

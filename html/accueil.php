@@ -2,15 +2,6 @@
   session_start();
   $db = new PDO('mysql:host=localhost;dbname=oaa', 'root', '') or die('could not connect to database');
   
-  //preparer la requete
-  //$req = $db->prepare('SELECT * FROM strategie');
-
-  //execution de la requete
-  //$executeIsOK = $req->execute();
-
-  //recuperer des resultats en une seule fois
-  //$strategies = $req->fetchAll();
-  //var_dump($strategie);
 
   $loggedUser = $_SESSION['user'];
   $user_id = $loggedUser['idApprenant'];
@@ -20,17 +11,13 @@
   $sql = "SELECT cours.* 
           FROM cours
           LEFT JOIN objectif on objectif.cours_idCours = cours.idCours
-          where objectif.apprenant_idApprenant = $user_id
+          where objectif.apprenant_idApprenant = $user_id 
+          order By idCours DESC
           ";
     $result = $db->prepare($sql);
     $result->execute();
     $cours = $result->fetchAll();
 
-  
-
-
-    // var_dump($cours);
-    // die();
 ?>
 
 <!DOCTYPE html>
@@ -140,7 +127,7 @@
                         <table class="table table-hover">
                           <thead class=" text-primary">
                             <th>
-                              #
+                              
                             </th>
                             <th>
                               Nom
@@ -148,27 +135,31 @@
                             <th>
                               Plateforme
                             </th>
-                            <th></th>
+
+                            <th>
+                            Action
+                            </th>
                           </thead>
                           <tbody>
-                
+                        <?php $i = 1; ?>
                             <?php foreach ($cours as $c) :  ?>
                               
                             <tr>
                               <td>
-                                <a href="dashboard.php">
-                                  <b><?= $c['idCours'] ?></b>
-                                </a>
+                                <?php echo $i++ ?>
                               </td>
-                              <td><a href="dashboard.php">
+                              <td> 
                               <?= $c['nomCours'] ?>
-                              </td></a>
+                              </td>
                               <td>
                               <?= $c['plateforme_url'] ?>
                               </td>
                               <td>
                                    
                                         
+                                <a href="dashboard.php?idCours=<?php echo $c['idCours']?>" class="btn btn-primary btn-link" >
+                                  <i class="material-icons">analytics</i> Consulter
+                                </a>
                                 <button type="button" class="btn btn-primary btn-link" data-toggle="modal" data-target="#popup">
                                   <i class="material-icons">delete_forever</i> Supprimer
                                 </button>
