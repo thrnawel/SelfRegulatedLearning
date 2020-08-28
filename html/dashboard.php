@@ -67,7 +67,7 @@ $db = new PDO('mysql:host=localhost;dbname=oaa', 'root', '') or die('could not c
       <div class="container-fluid">
         <p style="color: white;">some writing....</p>
        
-      <div class="col"><p style="font-size :30px; font-variant: small-caps">DASHBOARD  
+      <div class="col"><p style="font-size :30px; font-variant: small-caps">DASHBOARD -
       
               <?php
               $cour_id = $_GET['idCours'];
@@ -76,7 +76,7 @@ $db = new PDO('mysql:host=localhost;dbname=oaa', 'root', '') or die('could not c
               $user = $stmt->fetch();
               echo $user['nomCours'];
               ?>  
-        
+        </p>
 
          </div>
 <div class="content" > 
@@ -184,7 +184,7 @@ $db = new PDO('mysql:host=localhost;dbname=oaa', 'root', '') or die('could not c
                       
                 <div class="card-body">
                   <br>
-                  Afficher les suggestions générées pour ce cours<br>
+                  Afficher les suggestions générées pour ce cours<br> 
                 </div>
                     
               </div>

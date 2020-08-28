@@ -52,9 +52,7 @@
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="nouveauCours.php">
-                  <i class="material-icons">book</i>Ajouter un cours
-                </a>
+               
             </ul>
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
@@ -120,7 +118,20 @@
                 <div class="col-md-12">
                   <div class="card">
                     <div class="card-header card-header-primary">
-                      <h4 class="card-title ">Cours enregistrés</h4>
+                    <div class="row">
+                    <div class="col-6">
+                    <h4 class="card-title ">Cours enregistrés</h4>
+                    </div>
+                    <div class="col-6">
+                    <span class="float-right">
+                    <a href="nouveauCours.php" class="text-light">
+                    Ajouter un cours
+                    <i class="material-icons text-light" >add</i>
+                    </a>
+                    </span>
+                    </div>
+                    </div>
+                      
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">
@@ -137,7 +148,7 @@
                             </th>
 
                             <th>
-                            Action
+                            
                             </th>
                           </thead>
                           <tbody>
@@ -149,17 +160,16 @@
                                 <?php echo $i++ ?>
                               </td>
                               <td> 
+                              <a href="dashboard.php?idCours=<?php echo $c['idCours']?>" data-toggle="tooltip" data-placement="top" title="Accéder au tableau de bord du cours">
                               <?= $c['nomCours'] ?>
+                              </a>
                               </td>
                               <td>
                               <?= $c['plateforme_url'] ?>
                               </td>
                               <td>
                                    
-                                        
-                                <a href="dashboard.php?idCours=<?php echo $c['idCours']?>" class="btn btn-primary btn-link" >
-                                  <i class="material-icons">analytics</i> Consulter
-                                </a>
+                             
                                 <button type="button" class="btn btn-primary btn-link" data-toggle="modal" data-target="#popup">
                                   <i class="material-icons">delete_forever</i> Supprimer
                                 </button>
@@ -346,7 +356,11 @@
   
   <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
   
-  
+  <script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+  </script>
 </body>
 
 </html>

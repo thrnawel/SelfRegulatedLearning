@@ -200,7 +200,8 @@
     <script src="../assets/js/summernote-lite.min.js"></script>
 <script> 
 $('#object').summernote({
-        placeholder: 'objectifs...',
+        placeholder: 'objectif-1<br>objectif-2<br>objectif-3<br>...',
+        
         tabsize: 2,
         height: 120,
         toolbar: [ ]
