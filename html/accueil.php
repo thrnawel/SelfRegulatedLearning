@@ -182,7 +182,13 @@
                                       </div>
                                    <div class="modal-body">
                                      <p> Toutes vos données seront perdues!</p>
-                                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Confirmer</button>
+                                    
+                                     
+                                     <a href="../php/supprimer.php?idCours=<?php echo $c['idCours']?> "class="btn btn-outline-primary">
+                                     Confirmer
+                                     </a>
+                                     
+                                                
                                     </div>
                                </div>
                       </div>
@@ -364,3 +370,7 @@
 </body>
 
 </html>
+
+
+
+

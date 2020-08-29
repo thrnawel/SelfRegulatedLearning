@@ -32,8 +32,7 @@ if(isset($_POST['submit']))
         $last_id = $db->lastInsertId();
        
         $idApprenant = $user_id;
-
-        
+     
         $req2="INSERT INtO objectif (apprenant_idApprenant,	cours_idCours, description_objectif) VALUES ('$idApprenant', '$last_id', '$dsc')";
         $res2=$db->prepare($req2);
         $res2->execute();

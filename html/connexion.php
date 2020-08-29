@@ -17,11 +17,11 @@
 </head>
 
 <body style="background-color: rgb(255, 255, 255);">
-  <div class="wrapper">
+  <div class="wrapper" >
       <div class="row" style="height: 100vh; width: auto;">
-          <div class="col-7" style="background-color: rgba(241, 225, 243, 0.438);"></div>
+          <div class="col-4" ></div>
           <!--<div><img class="img" src="../assets/img/compte.JPG" /></div>-->
-          <div class="col">
+          <div class="col-4">
             <form class="border border-light p-5 mt-2"  method="POST" action="../php/connexion.php" >
                 <img class="img mx-auto d-block" src="../assets/img/login.png"  /> 
                 <p class="h3 mb-4 text-center">Connexion</p>
